@@ -57,9 +57,7 @@ public class EnemyController : MonoBehaviour
             SoundManager.Instance.EnemyDeath();
             delay.DelayNewTime();
             playerHealth.Lives();
-
-
-
+            Movement.Cancel();
         }
     }
 }

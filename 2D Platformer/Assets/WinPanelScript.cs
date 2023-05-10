@@ -20,6 +20,7 @@ public class WinPanelScript : MonoBehaviour
         SceneManager.LoadScene(1);
         int score = ScoreManager.score;
         scoreText.text = score.ToString();
+        Movement.Cancel();
     }
     public void QuitGame()
     {

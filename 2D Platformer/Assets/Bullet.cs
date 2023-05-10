@@ -37,6 +37,7 @@ public class Bullet : MonoBehaviour
             Instantiate(playerDeathParticle, transform.position, Quaternion.identity);
             playerHealth.Lives();
             delay.DelayNewTime();
+            Movement.Cancel();
         }
         if (collision.gameObject.CompareTag("Zemin"))
         {
