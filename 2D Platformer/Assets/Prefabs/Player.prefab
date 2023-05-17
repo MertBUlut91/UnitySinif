@@ -221,14 +221,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  jumpPower: 10
+  jumpPower: 5
   radius: 0.03
   gravityScale: 1
   fallGravityScale: 5
   horizontalMove: 0
+  jumpStartTime: 0.3
   dashAmount: 50
   dashTime: 0.2
-  dashCooldown: 2.5
   feetPos: {fileID: 2645763593997418420}
   levelManager: {fileID: 0}
   delay: {fileID: 0}
@@ -248,8 +248,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d43051a36a133274f903f37dacdd9190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftBoundy: -18
-  rightBoundy: 16.5
+  leftBoundry: -18
+  righBoundry: 18
 --- !u!96 &8672092062238873565
 TrailRenderer:
   serializedVersion: 2

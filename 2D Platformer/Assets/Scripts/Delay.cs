@@ -4,6 +4,21 @@ using UnityEngine;
 
 public class Delay : MonoBehaviour
 {
+    #region Singleton
+    public static Delay Instance { get; private set; }
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+    #endregion
+
     LevelManager levelManager;
     [SerializeField] float delayTimer;
     public bool delayTime;

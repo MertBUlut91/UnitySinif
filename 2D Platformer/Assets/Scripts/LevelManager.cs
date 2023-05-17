@@ -8,6 +8,24 @@ using Random = UnityEngine.Random;
 
 public class LevelManager : MonoBehaviour
 {
+    #region Singleton
+    public static LevelManager Instance { get; private set; }
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+
+        PlayerSpawner();
+        FriesSPawner();
+    }
+    #endregion
+
     [SerializeField] GameObject playerPrefab;
     [SerializeField] Transform playerSpawnPos;
     [SerializeField] GameObject friesPrefab;
@@ -17,15 +35,6 @@ public class LevelManager : MonoBehaviour
     [SerializeField] GameObject runText;
     public static bool canMove;
 
-    
-    
-
-    private void Awake()
-    {
-        PlayerSpawner();
-        FriesSPawner();
-
-    }
     private void Update()
     {
         if (count==5)

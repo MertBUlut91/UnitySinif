@@ -28,13 +28,22 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip enemydeath;
     [SerializeField] private AudioClip win;
     [SerializeField] private AudioClip door;
-
-
-
+    public AudioClip[] sounds;
  
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+    }
+
+    public void PlaySoundOld(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
+    }
+
+    public void PlaySound(int index)
+    {
+        audioSource.PlayOneShot(sounds[index]);
+        Debug.Log("Index Sound");
     }
 
     public void Jump()

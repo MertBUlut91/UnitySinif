@@ -10,6 +10,10 @@ public class Movement : MonoBehaviour
     [SerializeField] private float gravityScale;
     [SerializeField] private float fallGravityScale;
     [SerializeField] private float horizontalMove;
+    [SerializeField] float jumpStartTime;
+    private float jumpTime;
+    private bool isJumping;
+    private bool doubleJump;
 
     public static bool canDash = true;
     public static bool isDashing;
@@ -103,10 +107,42 @@ public class Movement : MonoBehaviour
     }
     void PlayerJump()
     {
+
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
+
+            SoundManager.Instance.PlaySound(6);
+            isJumping = true;
+            doubleJump = true;
+            jumpTime = jumpStartTime;
             rb.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-            SoundManager.Instance.Jump();
+
+            SoundManager.Instance.PlaySoundOld(SoundManager.Instance.sounds[6]);
+
+
+        }
+        else if (Input.GetButtonDown("Jump") && doubleJump)
+        {
+            rb.AddForce(Vector2.up * jumpPower*1.5f, ForceMode2D.Impulse);
+            doubleJump = false;
+        }
+
+        if (Input.GetButton("Jump") && isJumping)
+        {
+            if (jumpTime>0)
+            {
+                rb.AddForce(Vector2.up*5, ForceMode2D.Force);
+                jumpTime -= Time.deltaTime;
+            }
+            else
+            {
+                isJumping=false;
+            }
+        }
+
+        if (Input.GetButtonUp("Jump"))
+        {
+            isJumping = false; 
         }
     }
 

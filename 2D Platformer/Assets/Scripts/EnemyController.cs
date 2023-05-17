@@ -54,7 +54,7 @@ public class EnemyController : MonoBehaviour
         {
             Debug.Log("Game Over!");
             Destroy(collision.gameObject);
-            SoundManager.Instance.EnemyDeath();
+            SoundManager.Instance.PlaySoundOld(SoundManager.Instance.sounds[2]);
             delay.DelayNewTime();
             playerHealth.Lives();
             Movement.Cancel();
