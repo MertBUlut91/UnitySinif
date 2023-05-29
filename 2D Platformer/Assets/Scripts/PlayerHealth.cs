@@ -42,6 +42,7 @@ public class PlayerHealth : MonoBehaviour
         Destroy(playerLives[playerLife]);
         if (playerLife<1)
         {
+            LevelManager.Instance.stopKnife = true;
             uIManager.GetComponent<Canvas>().enabled = true;
         }
     }

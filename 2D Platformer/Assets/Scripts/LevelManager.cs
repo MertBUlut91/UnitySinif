@@ -33,15 +33,32 @@ public class LevelManager : MonoBehaviour
     public int count;
     [SerializeField] GameObject door;
     [SerializeField] GameObject runText;
+
+    [Header("Knife")]
+    [SerializeField] GameObject knifePrefab;
+    [SerializeField] float minSpawn;
+    [SerializeField] float maxSpawn;
+    [SerializeField] float startSpawn;
+    [SerializeField] float startWait;
+    public bool stopKnife;
+    [SerializeField] float xPos;
+
     public static bool canMove;
 
+
+    private void Start()
+    {
+        StartCoroutine(KnifeSpawner());
+    }
     private void Update()
     {
         if (count==5)
         {
             door.SetActive(true);
             runText.SetActive(true);
+            stopKnife = true;
         }
+        startSpawn = Random.Range(minSpawn, maxSpawn);
     }
 
     void PlayerSpawner()
@@ -77,6 +94,17 @@ public class LevelManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         PlayerRespawner();
+    }
+    private IEnumerator KnifeSpawner()
+    {
+        yield return new WaitForSeconds(startWait);
+
+        while (!stopKnife)
+        {
+            Vector2 spawnPos = new Vector2(xPos, Random.Range(-9.5f, 0));
+            Instantiate(knifePrefab,spawnPos,Quaternion.identity);
+            yield return new WaitForSeconds(startSpawn);
+        }
     }
 
 
