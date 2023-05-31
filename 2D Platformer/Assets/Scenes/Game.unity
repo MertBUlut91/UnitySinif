@@ -2124,8 +2124,8 @@ MonoBehaviour:
   door: {fileID: 276445750}
   runText: {fileID: 51970068}
   knifePrefab: {fileID: 9078607220331346844, guid: e5067f44a8407294599d89eefd39e9fc, type: 3}
-  minSpawn: 1
-  maxSpawn: 5
+  minSpawn: 0
+  maxSpawn: 1
   startSpawn: 0
   startWait: 1
   stopKnife: 0
@@ -3411,7 +3411,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1536423684
 SpriteRenderer:
   m_ObjectHideFlags: 0

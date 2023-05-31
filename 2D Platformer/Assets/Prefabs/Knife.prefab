@@ -102,6 +102,7 @@ MonoBehaviour:
   moveSpeed: 5
   turnSpeed: 5
   knifeParticle: {fileID: 19800004, guid: f95ff734540a0d749be6571b6cb5b37f, type: 3}
+  blockParticle: {fileID: 19800000, guid: 979632a27455af442bd2d8f36eb0ffce, type: 3}
   destroyLimit: -20
   easyMoveSpeed: 2
   normalMoveSpeed: 5

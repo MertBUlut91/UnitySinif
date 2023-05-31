@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,7 @@ public class Movement : MonoBehaviour
     private float jumpTime;
     private bool isJumping;
     private bool doubleJump;
-
+    public static bool blocking;
     public static bool canDash = true;
     public static bool isDashing;
     public static bool dashed;
@@ -33,11 +34,14 @@ public class Movement : MonoBehaviour
     [SerializeField] LayerMask layerMask;
     private Rigidbody2D rb;
     private TrailRenderer tr;
+    private Animator anim;
+
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         tr = GetComponent<TrailRenderer>();
+        anim = GetComponent<Animator>();
         playerRenderer = GetComponent<SpriteRenderer>();
         levelManager = GameObject.Find("Level Manager").GetComponent<LevelManager>();
         delay = GameObject.Find("Level Manager").GetComponent<Delay>();
@@ -45,6 +49,7 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(IsGrounded());
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && horizontalMove != 0)
         {
             StartCoroutine(Dash());
@@ -54,7 +59,7 @@ public class Movement : MonoBehaviour
             PlayerMove();
             PlayerJump();
         }
-
+        Blocking();
         PlayerRendererTurn();
         PlayerGravity();
         PlayerDeath();
@@ -104,6 +109,7 @@ public class Movement : MonoBehaviour
         }
         horizontalMove = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(horizontalMove * speed, rb.velocity.y);
+        anim.SetFloat("Move", MathF.Abs(horizontalMove));
     }
     void PlayerJump()
     {
@@ -115,34 +121,38 @@ public class Movement : MonoBehaviour
             isJumping = true;
             doubleJump = true;
             jumpTime = jumpStartTime;
+            anim.SetBool("Jump", true);
             rb.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-
             SoundManager.Instance.PlaySoundOld(SoundManager.Instance.sounds[6]);
 
 
         }
         else if (Input.GetButtonDown("Jump") && doubleJump)
         {
-            rb.AddForce(Vector2.up * jumpPower*1.5f, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.up * jumpPower * 1.5f, ForceMode2D.Impulse);
             doubleJump = false;
         }
 
         if (Input.GetButton("Jump") && isJumping)
         {
-            if (jumpTime>0)
+            if (jumpTime > 0)
             {
-                rb.AddForce(Vector2.up*5, ForceMode2D.Force);
+                rb.AddForce(Vector2.up * 5, ForceMode2D.Force);
                 jumpTime -= Time.deltaTime;
             }
             else
             {
-                isJumping=false;
+                isJumping = false;
             }
         }
 
         if (Input.GetButtonUp("Jump"))
         {
-            isJumping = false; 
+            isJumping = false;
+        }
+        if (Mathf.Approximately(rb.velocity.y, 0) && anim.GetBool("Jump"))
+        {
+            anim.SetBool("Jump", false);
         }
     }
 
@@ -166,9 +176,23 @@ public class Movement : MonoBehaviour
         Debug.Log("Can Dash");
         canDash = true;
     }
+    private void Blocking()
+    {
+        if (Input.GetMouseButton(0)&&IsGrounded())
+        {
+            anim.SetBool("Shield",true);
+            blocking= true;
+        }
+        else
+        {
+            anim.SetBool("Shield",false);
+            blocking = false;
+        }
+    }
     public static void Cancel()
     {
         canDash = true;
         isDashing = false;
+        blocking = false;
     }
 }

@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2645763593997418421}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.493, z: 0}
+  m_LocalPosition: {x: 0, y: -0.277, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -45,7 +45,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.02470991, y: -0.043723106}
+  m_Offset: {x: -0.019016229, y: 0.0021058964}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -56,7 +56,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5716948, y: 0.11552286}
+  m_Size: {x: 0.23354594, y: 0.036940023}
   m_EdgeRadius: 0
 --- !u!1 &2645763595407940607
 GameObject:
@@ -74,6 +74,7 @@ GameObject:
   - component: {fileID: 2645763595407940601}
   - component: {fileID: 6938745773453210235}
   - component: {fileID: 8672092062238873565}
+  - component: {fileID: 2851470813254611482}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -90,7 +91,7 @@ Transform:
   m_GameObject: {fileID: 2645763595407940607}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.64325047, y: -1.6661144, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 6, y: 6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2645763593997418420}
@@ -138,7 +139,7 @@ SpriteRenderer:
   m_SortingLayerID: -293493611
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3a7c71ddfef58844da5b9b26edf2b565, type: 3}
+  m_Sprite: {fileID: -1159824863, guid: 02bfd154abb2ebc4680ce7f723c7ee85, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -162,18 +163,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0045607686, y: -0.0032887459}
+  m_Offset: {x: -0.016221106, y: -0.058675177}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1, y: 0.55}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0058964, y: 0.99543}
+  m_Size: {x: 0.27129734, y: 0.41824484}
   m_EdgeRadius: 0
 --- !u!50 &2645763595407940604
 Rigidbody2D:
@@ -358,3 +359,24 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 0
+--- !u!95 &2851470813254611482
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2645763595407940607}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e510cbe7aadfbbc4780613d4dd81d2bf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
