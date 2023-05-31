@@ -29,7 +29,6 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //gameObject.SetActive(false);
-        Destroy(gameObject);
 
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -38,10 +37,14 @@ public class Bullet : MonoBehaviour
             playerHealth.Lives();
             delay.DelayNewTime();
             Movement.Cancel();
+            Destroy(gameObject);
+
         }
         if (collision.gameObject.CompareTag("Zemin"))
         {
             Instantiate(hitParticle, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+
         }
     }
 }

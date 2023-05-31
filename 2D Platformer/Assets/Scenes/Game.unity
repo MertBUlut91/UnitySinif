@@ -1152,6 +1152,9 @@ MonoBehaviour:
   bulletSpawnPos: {fileID: 1903068636}
   muzzleEffect: {fileID: 19800004, guid: f95ff734540a0d749be6571b6cb5b37f, type: 3}
   fireRate: 1
+  easyFireRate: 1.5
+  normalFireRate: 1
+  hardFireRate: 0.5
 --- !u!212 &442118888
 SpriteRenderer:
   m_ObjectHideFlags: 0

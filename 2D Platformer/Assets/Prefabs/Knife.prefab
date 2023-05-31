@@ -103,6 +103,9 @@ MonoBehaviour:
   turnSpeed: 5
   knifeParticle: {fileID: 19800004, guid: f95ff734540a0d749be6571b6cb5b37f, type: 3}
   destroyLimit: -20
+  easyMoveSpeed: 2
+  normalMoveSpeed: 5
+  hardMoveSpeed: 7
 --- !u!61 &9078607220331346832
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -113,7 +116,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.008542962}

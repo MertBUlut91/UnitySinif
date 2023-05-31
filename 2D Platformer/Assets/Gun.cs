@@ -12,8 +12,15 @@ public class Gun : MonoBehaviour
 
     [SerializeField] float fireRate;
     private float nextFire = 0;
+    [Header("Mode Fire Rate Speed")]
+    [SerializeField] float easyFireRate;
+    [SerializeField] float normalFireRate;
+    [SerializeField] float hardFireRate;
 
-
+    private void Start()
+    {
+        HardenedLevel();
+    }
     void Update()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -39,5 +46,21 @@ public class Gun : MonoBehaviour
         Instantiate(bulletPrefab, bulletSpawnPos.transform.position, bulletSpawnPos.transform.rotation);
         Instantiate(muzzleEffect, bulletSpawnPos.transform.position, Quaternion.identity);
 
+    }
+
+    private void HardenedLevel()
+    {
+        if (PlayerPrefs.HasKey("Easy Mode"))
+        {
+            fireRate = easyFireRate;
+        }
+        if (PlayerPrefs.HasKey("Normal Mode"))
+        {
+            fireRate = normalFireRate;
+        }
+        if (PlayerPrefs.HasKey("Hard Mode"))
+        {
+            fireRate = hardFireRate;
+        }
     }
 }
